@@ -29,93 +29,98 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblUrl = new System.Windows.Forms.Label();
+            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnFolder = new System.Windows.Forms.Button();
+            this.cbOpen = new System.Windows.Forms.CheckBox();
+            this.pgbDownload = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.webClient1 = new System.Net.WebClient();
+            this.fbdFile = new System.Windows.Forms.FolderBrowserDialog();
+            this.webClient = new System.Net.WebClient();
             this.SuspendLayout();
             // 
-            // label1
+            // lblUrl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "주소";
+            this.lblUrl.AutoSize = true;
+            this.lblUrl.Location = new System.Drawing.Point(12, 10);
+            this.lblUrl.Name = "lblUrl";
+            this.lblUrl.Size = new System.Drawing.Size(29, 12);
+            this.lblUrl.TabIndex = 0;
+            this.lblUrl.Text = "주소";
             // 
-            // textBox1
+            // txtUrl
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(371, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtUrl.Location = new System.Drawing.Point(56, 6);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(371, 21);
+            this.txtUrl.TabIndex = 1;
             // 
-            // button1
+            // btnDown
             // 
-            this.button1.Location = new System.Drawing.Point(433, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDown.Enabled = false;
+            this.btnDown.Location = new System.Drawing.Point(433, 5);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(75, 23);
+            this.btnDown.TabIndex = 2;
+            this.btnDown.Text = "다운로드";
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
-            // button2
+            // btnFolder
             // 
-            this.button2.Location = new System.Drawing.Point(514, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnFolder.Location = new System.Drawing.Point(514, 5);
+            this.btnFolder.Name = "btnFolder";
+            this.btnFolder.Size = new System.Drawing.Size(75, 23);
+            this.btnFolder.TabIndex = 3;
+            this.btnFolder.Text = "폴 더";
+            this.btnFolder.UseVisualStyleBackColor = true;
+            this.btnFolder.Click += new System.EventHandler(this.btnFolder_Click);
             // 
-            // checkBox1
+            // cbOpen
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(595, 8);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 16);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbOpen.AutoSize = true;
+            this.cbOpen.Location = new System.Drawing.Point(595, 8);
+            this.cbOpen.Name = "cbOpen";
+            this.cbOpen.Size = new System.Drawing.Size(64, 16);
+            this.cbOpen.TabIndex = 4;
+            this.cbOpen.Text = "창 열기";
+            this.cbOpen.UseVisualStyleBackColor = true;
             // 
-            // progressBar1
+            // pgbDownload
             // 
-            this.progressBar1.Location = new System.Drawing.Point(14, 33);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(667, 23);
-            this.progressBar1.TabIndex = 5;
+            this.pgbDownload.Location = new System.Drawing.Point(12, 33);
+            this.pgbDownload.Name = "pgbDownload";
+            this.pgbDownload.Size = new System.Drawing.Size(647, 23);
+            this.pgbDownload.TabIndex = 5;
             // 
-            // webClient1
+            // webClient
             // 
-            this.webClient1.AllowReadStreamBuffering = false;
-            this.webClient1.AllowWriteStreamBuffering = false;
-            this.webClient1.BaseAddress = "";
-            this.webClient1.CachePolicy = null;
-            this.webClient1.Credentials = null;
-            this.webClient1.Encoding = ((System.Text.Encoding)(resources.GetObject("webClient1.Encoding")));
-            this.webClient1.Headers = ((System.Net.WebHeaderCollection)(resources.GetObject("webClient1.Headers")));
-            this.webClient1.QueryString = ((System.Collections.Specialized.NameValueCollection)(resources.GetObject("webClient1.QueryString")));
-            this.webClient1.UseDefaultCredentials = false;
+            this.webClient.BaseAddress = "";
+            this.webClient.CachePolicy = null;
+            this.webClient.Credentials = null;
+            this.webClient.Encoding = ((System.Text.Encoding)(resources.GetObject("webClient.Encoding")));
+            this.webClient.Headers = ((System.Net.WebHeaderCollection)(resources.GetObject("webClient.Headers")));
+            this.webClient.QueryString = ((System.Collections.Specialized.NameValueCollection)(resources.GetObject("webClient.QueryString")));
+            this.webClient.UseDefaultCredentials = false;
+            this.webClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.webClient_DownloadFileCompleted);
+            this.webClient.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(this.webClient_DownloadProgressChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 71);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(671, 64);
+            this.Controls.Add(this.pgbDownload);
+            this.Controls.Add(this.cbOpen);
+            this.Controls.Add(this.btnFolder);
+            this.Controls.Add(this.btnDown);
+            this.Controls.Add(this.txtUrl);
+            this.Controls.Add(this.lblUrl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "웹 다운로드";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,15 +128,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblUrl;
+        private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Button btnFolder;
+        private System.Windows.Forms.CheckBox cbOpen;
+        private System.Windows.Forms.ProgressBar pgbDownload;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Net.WebClient webClient1;
+        private System.Windows.Forms.FolderBrowserDialog fbdFile;
+        private System.Net.WebClient webClient;
     }
 }
 

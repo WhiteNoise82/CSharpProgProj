@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Collections;
@@ -26,11 +19,11 @@ namespace Ch03_06
 
         //시스템 CPU 성능 카운터
         private PerformanceCounter oCPU =
-            new PerformanceCounter("Processor", "%Processor Time", "_Total");
+            new PerformanceCounter("Processor", "% Processor Time", "_Total");
 
         //시스템 Mem 성능 카운터
         private PerformanceCounter oMem =
-            new PerformanceCounter("Memory", "%Committed Bytes In Use");
+            new PerformanceCounter("Memory", "% Committed Bytes In Use");
         private PerformanceCounter pCPU = new PerformanceCounter();
 
         bool bExit = false;
@@ -45,7 +38,10 @@ namespace Ch03_06
         {
             ProcessView();
 
-            UpProc=new ProcessUpdateDelegate()
+            UpProc = new ProcessUpdateDelegate(ProcessView);
+            OnTotal = new TotalUpdateDelegate(TotalView);
+            ProcessThread = new Thread(ProcessUpdate);
+            ProcessThread.Start();
         }
 
         private void ProcessUpdate()

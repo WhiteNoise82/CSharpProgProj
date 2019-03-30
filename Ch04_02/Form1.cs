@@ -76,7 +76,23 @@ namespace Ch04_02
                 }
                 else
                 {
-                    if(f.Attributes.ToString().)
+                    if (f.Attributes.ToString().Contains(FileAttributes.Hidden.ToString()))
+                    {
+                        FileCount++;
+                        Invoke(OnFile, f.DirectoryName, f.Name, f.Length.ToString(),
+                            f.CreationTime.ToString());
+                    }
+                }
+            }
+            for(int i = 0; i < di.GetDirectories().Length; i++)
+            {
+                try
+                {
+                    FileView(dti[i].FullName);
+                }
+                catch
+                {
+                    continue;
                 }
             }
         }
@@ -102,6 +118,34 @@ namespace Ch04_02
             if (this.txtPath.Text != "")
             {
                 this.lvFile.Items.Clear();
+                threadFileView =
+                    new Thread(new ParameterizedThreadStart(FileView));
+                threadFileView.Start(this.fbdFolder.SelectedPath);
+            }
+        }
+
+        private void rbtnHidden_CheckedChanged(object sender, EventArgs e)
+        {
+            ItemsClear();
+            Flag = false;
+            if(threadFileView != null)
+            {
+                threadFileView.Abort();
+            }
+            if (this.txtPath.Text != "")
+            {
+                this.lvFile.Items.Clear();
+                threadFileView = new Thread(new ParameterizedThreadStart(FileView));
+                threadFileView.Start(this.fbdFolder.SelectedPath);
+            }
+        }
+
+        private void btnPath_Click(object sender, EventArgs e)
+        {
+            if (this.fbdFolder.ShowDialog() == DialogResult.OK)
+            {
+                ItemsClear();
+                this.txtPath.Text = this.fbdFolder.SelectedPath;
                 threadFileView =
                     new Thread(new ParameterizedThreadStart(FileView));
                 threadFileView.Start(this.fbdFolder.SelectedPath);

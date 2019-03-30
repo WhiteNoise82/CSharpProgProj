@@ -34,12 +34,12 @@
             this.rbtnAll = new System.Windows.Forms.RadioButton();
             this.rbtnHidden = new System.Windows.Forms.RadioButton();
             this.lvFile = new System.Windows.Forms.ListView();
-            this.fbdFolder = new System.Windows.Forms.FolderBrowserDialog();
-            this.ssBar = new System.Windows.Forms.StatusStrip();
             this.chFilePath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFileTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFileSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fbdFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.ssBar = new System.Windows.Forms.StatusStrip();
             this.tsslblResult = new System.Windows.Forms.ToolStripStatusLabel();
             this.ssBar.SuspendLayout();
             this.SuspendLayout();
@@ -47,35 +47,40 @@
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(17, 14);
+            this.lblPath.Location = new System.Drawing.Point(32, 28);
+            this.lblPath.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(37, 12);
+            this.lblPath.Size = new System.Drawing.Size(74, 24);
             this.lblPath.TabIndex = 0;
             this.lblPath.Text = "경로 :";
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(68, 10);
+            this.txtPath.Location = new System.Drawing.Point(126, 20);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(558, 21);
+            this.txtPath.Size = new System.Drawing.Size(1033, 35);
             this.txtPath.TabIndex = 1;
             // 
             // btnPath
             // 
-            this.btnPath.Location = new System.Drawing.Point(640, 9);
+            this.btnPath.Location = new System.Drawing.Point(1189, 18);
+            this.btnPath.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnPath.Name = "btnPath";
-            this.btnPath.Size = new System.Drawing.Size(75, 23);
+            this.btnPath.Size = new System.Drawing.Size(139, 46);
             this.btnPath.TabIndex = 2;
             this.btnPath.Text = "경로";
             this.btnPath.UseVisualStyleBackColor = true;
+            this.btnPath.Click += new System.EventHandler(this.btnPath_Click);
             // 
             // rbtnAll
             // 
             this.rbtnAll.AutoSize = true;
-            this.rbtnAll.Location = new System.Drawing.Point(17, 43);
+            this.rbtnAll.Location = new System.Drawing.Point(32, 86);
+            this.rbtnAll.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbtnAll.Name = "rbtnAll";
-            this.rbtnAll.Size = new System.Drawing.Size(71, 16);
+            this.rbtnAll.Size = new System.Drawing.Size(137, 28);
             this.rbtnAll.TabIndex = 3;
             this.rbtnAll.TabStop = true;
             this.rbtnAll.Text = "전체파일";
@@ -85,13 +90,15 @@
             // rbtnHidden
             // 
             this.rbtnHidden.AutoSize = true;
-            this.rbtnHidden.Location = new System.Drawing.Point(99, 43);
+            this.rbtnHidden.Location = new System.Drawing.Point(184, 86);
+            this.rbtnHidden.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rbtnHidden.Name = "rbtnHidden";
-            this.rbtnHidden.Size = new System.Drawing.Size(71, 16);
+            this.rbtnHidden.Size = new System.Drawing.Size(137, 28);
             this.rbtnHidden.TabIndex = 4;
             this.rbtnHidden.TabStop = true;
             this.rbtnHidden.Text = "숨김파일";
             this.rbtnHidden.UseVisualStyleBackColor = true;
+            this.rbtnHidden.CheckedChanged += new System.EventHandler(this.rbtnHidden_CheckedChanged);
             // 
             // lvFile
             // 
@@ -101,22 +108,13 @@
             this.chFileTime,
             this.chFileSize});
             this.lvFile.GridLines = true;
-            this.lvFile.Location = new System.Drawing.Point(17, 70);
+            this.lvFile.Location = new System.Drawing.Point(32, 140);
+            this.lvFile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lvFile.Name = "lvFile";
-            this.lvFile.Size = new System.Drawing.Size(825, 276);
+            this.lvFile.Size = new System.Drawing.Size(1529, 548);
             this.lvFile.TabIndex = 5;
             this.lvFile.UseCompatibleStateImageBehavior = false;
             this.lvFile.View = System.Windows.Forms.View.Details;
-            // 
-            // ssBar
-            // 
-            this.ssBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslblResult});
-            this.ssBar.Location = new System.Drawing.Point(0, 365);
-            this.ssBar.Name = "ssBar";
-            this.ssBar.Size = new System.Drawing.Size(861, 22);
-            this.ssBar.TabIndex = 6;
-            this.ssBar.Text = "statusStrip1";
             // 
             // chFilePath
             // 
@@ -138,17 +136,29 @@
             this.chFileSize.Text = "크기";
             this.chFileSize.Width = 150;
             // 
+            // ssBar
+            // 
+            this.ssBar.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.ssBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslblResult});
+            this.ssBar.Location = new System.Drawing.Point(0, 737);
+            this.ssBar.Name = "ssBar";
+            this.ssBar.Padding = new System.Windows.Forms.Padding(2, 0, 26, 0);
+            this.ssBar.Size = new System.Drawing.Size(1599, 37);
+            this.ssBar.TabIndex = 6;
+            this.ssBar.Text = "statusStrip1";
+            // 
             // tsslblResult
             // 
             this.tsslblResult.Name = "tsslblResult";
-            this.tsslblResult.Size = new System.Drawing.Size(130, 17);
+            this.tsslblResult.Size = new System.Drawing.Size(256, 32);
             this.tsslblResult.Text = "폴더 : 0 개, 파일 : 0 개";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 387);
+            this.ClientSize = new System.Drawing.Size(1599, 774);
             this.Controls.Add(this.ssBar);
             this.Controls.Add(this.lvFile);
             this.Controls.Add(this.rbtnHidden);
@@ -157,6 +167,7 @@
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.lblPath);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "파일 보기";
